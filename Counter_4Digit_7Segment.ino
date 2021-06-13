@@ -64,6 +64,7 @@ void loop(){
 
 if(digitalRead (bt_up) == 0){ 
 if(flag1==0){ flag1=1;
+digitalWrite(buzzer, HIGH);
 Counter = Counter+1;
 if(Counter>9999){Counter=0;} 
  }
@@ -71,6 +72,7 @@ if(Counter>9999){Counter=0;}
 
 if(digitalRead (bt_down) == 0){ 
 if(flag2==0){ flag2=1;
+digitalWrite(buzzer, HIGH);
 Counter = Counter-1;
 if(Counter<0){Counter=9999;} 
  }  
@@ -82,29 +84,30 @@ if(timer<200){timer=timer+1;}
 if(timer==200){
 Counter=0;
 }   
-}else{digitalWrite(buzzer, LOW); timer=0;}
+}else{timer=0;}
 
 
-digitalWrite(c1Pin, Common);
 showNumber((Counter/1000)%10);
+digitalWrite(c1Pin, Common);
 delay(DTime);
 digitalWrite(c1Pin, Off_C);
 
-digitalWrite(c2Pin, Common);
 showNumber((Counter/100)%10);
+digitalWrite(c2Pin, Common);
 delay(DTime);
 digitalWrite(c2Pin, Off_C);
 
-digitalWrite(c3Pin, Common);
 showNumber((Counter/10)%10);
+digitalWrite(c3Pin, Common);
 delay(DTime);
 digitalWrite(c3Pin, Off_C);
 
-digitalWrite(c4Pin, Common);
 showNumber(Counter%10);
+digitalWrite(c4Pin, Common);
 delay(DTime);
 digitalWrite(c4Pin, Off_C);
 
+digitalWrite(buzzer, LOW);
 }
 
 
